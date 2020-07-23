@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    command: bash -c "bundle exec shotgun"
+    links:
+      - mongo
+    ports:
+      - "9393:9393"
+    volumes:
+      - .:/poligon
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+    ports:
+      - "27017:27017"
